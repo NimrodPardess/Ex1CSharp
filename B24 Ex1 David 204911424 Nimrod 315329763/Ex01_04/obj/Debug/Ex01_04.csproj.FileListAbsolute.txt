@@ -1,0 +1,2 @@
+C:\Users\parde\Desktop\CS-IDC\S6\CSharp\HWs\HW1\B24 Ex1 David 204911424 Nimrod 315329763\Ex01_04\obj\Debug\Ex01_04.csproj.AssemblyReference.cache
+C:\Users\parde\Desktop\CS-IDC\S6\CSharp\HWs\HW1\B24 Ex1 David 204911424 Nimrod 315329763\Ex01_04\obj\Debug\Ex01_04.csproj.CoreCompileInputs.cache
