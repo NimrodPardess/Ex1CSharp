@@ -4,3 +4,9 @@ C:\Users\parde\Desktop\CS-IDC\S6\CSharp\HWs\HW1\B24 Ex1 David 204911424 Nimrod 3
 C:\Users\parde\Desktop\CS-IDC\S6\CSharp\HWs\HW1\B24 Ex1 David 204911424 Nimrod 315329763\Ex01_01\obj\Debug\Ex01_01.csproj.CoreCompileInputs.cache
 C:\Users\parde\Desktop\CS-IDC\S6\CSharp\HWs\HW1\B24 Ex1 David 204911424 Nimrod 315329763\Ex01_01\obj\Debug\Ex01_01.exe
 C:\Users\parde\Desktop\CS-IDC\S6\CSharp\HWs\HW1\B24 Ex1 David 204911424 Nimrod 315329763\Ex01_01\obj\Debug\Ex01_01.pdb
+C:\Users\parde\source\repos\Ex1CSharp\B24 Ex1 David 204911424 Nimrod 315329763\Ex01_01\bin\Debug\Ex01_01.exe
+C:\Users\parde\source\repos\Ex1CSharp\B24 Ex1 David 204911424 Nimrod 315329763\Ex01_01\bin\Debug\Ex01_01.pdb
+C:\Users\parde\source\repos\Ex1CSharp\B24 Ex1 David 204911424 Nimrod 315329763\Ex01_01\obj\Debug\Ex01_01.csproj.AssemblyReference.cache
+C:\Users\parde\source\repos\Ex1CSharp\B24 Ex1 David 204911424 Nimrod 315329763\Ex01_01\obj\Debug\Ex01_01.csproj.CoreCompileInputs.cache
+C:\Users\parde\source\repos\Ex1CSharp\B24 Ex1 David 204911424 Nimrod 315329763\Ex01_01\obj\Debug\Ex01_01.exe
+C:\Users\parde\source\repos\Ex1CSharp\B24 Ex1 David 204911424 Nimrod 315329763\Ex01_01\obj\Debug\Ex01_01.pdb

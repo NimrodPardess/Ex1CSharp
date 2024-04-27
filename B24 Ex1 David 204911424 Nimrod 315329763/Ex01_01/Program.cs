@@ -78,7 +78,7 @@ namespace Ex01_01
         static void PrintPowerOfTwoCount(List<int> decimalNumbers)
         {
             // Print the number of decimal numbers that are a power of 2
-            int powerOfTwoCount = decimalNumbers.Count(isPowerOfTwo);
+            int powerOfTwoCount = decimalNumbers.Count(IsPowerOfTwo);
             Console.WriteLine($"{powerOfTwoCount} of the input decimal numbers are a power of 2.");
         }
 
@@ -96,7 +96,7 @@ namespace Ex01_01
             Console.WriteLine($"The largest number is {decimalNumbers.Max()}");
         }
 
-        static bool isPowerOfTwo(int i_number)
+        static bool IsPowerOfTwo(int i_number)
         {
             return (int)(Math.Ceiling((Math.Log(i_number) / Math.Log(2))))
                   == (int)(Math.Floor(((Math.Log(i_number) / Math.Log(2)))));
