@@ -1,36 +1,89 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Ex01_02
 {
     public class Program2
     {
-        static void Main()
-        {
-            // Change this number to print a larger or smaller pattern. The main line is 2 * (input) + 1. For example: 4 as input is main line of 9 astericks.
-            PrintDiamondPattern(4);
-            // Console.WriteLine("Not suppose to print");
-        }
 
-        public static void PrintDiamondPattern(int numberOfAstericksDecider, int i_counter = 0)
+        private static void drawAsterisk(int i_NumOfAsterisks)
         {
-            if (i_counter > numberOfAstericksDecider)
+            if (i_NumOfAsterisks == 0)
             {
-                for (int j = numberOfAstericksDecider - 1; j >= 0; j--)
-                {
-                    Console.WriteLine(new String(' ', 2 * (numberOfAstericksDecider - j)) + String.Join(" ", new String('*', 2 * j + 1).ToCharArray()));
-                    Console.WriteLine();
-                }
                 return;
             }
-            Console.WriteLine(new String(' ', 2 * (numberOfAstericksDecider - i_counter)) + String.Join(" ", new String('*', 2 * i_counter + 1).ToCharArray()));
-            Console.WriteLine();
-            PrintDiamondPattern(numberOfAstericksDecider, i_counter + 1);
+
+            Console.Write("*");
+            drawAsterisk(i_NumOfAsterisks - 1);
         }
 
-        // Delete in the end
+        private static void drawSpace(int i_NumOfSpaces)
+        {
+            if (i_NumOfSpaces == 0) 
+            {
+                return;
+            }
+            
+            Console.Write(" ");
+            drawSpace(i_NumOfSpaces - 1);
+        }
+
+        // Prints the upper half of the diamond
+        private static void printUpperSideOfDiamond(int i_Num0fSpaces, int i_NumOfAsterisks)
+        {
+            // Base case: 
+            if (i_Num0fSpaces == 0)
+            {
+                return;
+            }
+
+            drawSpace(i_Num0fSpaces);
+            drawAsterisk(2 * (i_NumOfAsterisks - i_Num0fSpaces) + 1);
+            drawSpace(i_Num0fSpaces);
+            Console.Write("\n");
+
+            //recursion for upper side
+            printUpperSideOfDiamond(i_Num0fSpaces - 1, i_NumOfAsterisks);
+        }
+
+        // Prints the lower half of the diamond 
+        private static void printLowerSideOfDiamond(int i_Num0fSpaces, int i_NumOfAsterisks)
+        {
+            // Base case: 
+            if (i_Num0fSpaces == 0)
+            {
+                return;
+            }
+
+            drawSpace(i_NumOfAsterisks - i_Num0fSpaces + 1);
+            drawAsterisk(2 * i_Num0fSpaces - 1);
+            drawSpace(i_NumOfAsterisks - i_Num0fSpaces + 1);
+            Console.Write("\n");
+
+            //recursion for lower side`
+            printLowerSideOfDiamond(i_Num0fSpaces - 1, i_NumOfAsterisks);
+        }
+
+        // Prints a diamond
+        public static void printDiamond(int i_NumberOfRows)
+        {
+            int numOfAstrisks = i_NumberOfRows;
+            int numOfSpaces = i_NumberOfRows;
+
+            printUpperSideOfDiamond(numOfSpaces, numOfAstrisks);
+            printLowerSideOfDiamond(numOfSpaces - 1, numOfAstrisks);
+        }
+
+        public static void Main(String[] args)
+        {
+            int sizeOfDiamond = 5;
+            printDiamond(sizeOfDiamond);
+        }
+        // Need to ask Pardess for what is the reference
         public static void HelloWorld()
         {
             Console.WriteLine("HelloWorld");
