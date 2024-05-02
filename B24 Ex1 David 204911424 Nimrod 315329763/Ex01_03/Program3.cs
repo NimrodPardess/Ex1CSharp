@@ -10,7 +10,7 @@ namespace Ex01_03
     {
         public static void Main(String[] args)
         {
-            int sizeOfDiamond = getUserInput();
+            int sizeOfDiamond = checkInputOddOrEven(getUserInput());
             Ex01_02.Program2.printDiamond(sizeOfDiamond);
         }
 
@@ -28,6 +28,24 @@ namespace Ex01_03
 
             sizeOfDiamond = int.Parse(userInput);
             return sizeOfDiamond;
+        }
+
+        private static int checkInputOddOrEven(int input)
+        {
+            if (IsEven(input))
+            {
+                return input / 2;
+            }
+            return input / 2 + 1;
+        }
+
+        private static bool IsEven(int num) 
+        {
+            if (num % 2 == 0)
+            {
+                return true;
+            }    
+            return false;
         }
 
         public static bool IsValidInput(string i_sizeOfDiamond)
