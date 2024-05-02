@@ -83,10 +83,5 @@ namespace Ex01_02
             int sizeOfDiamond = 5;
             printDiamond(sizeOfDiamond);
         }
-        // Need to ask Pardess for what is the reference
-        public static void HelloWorld()
-        {
-            Console.WriteLine("HelloWorld");
-        }
     }
 }
