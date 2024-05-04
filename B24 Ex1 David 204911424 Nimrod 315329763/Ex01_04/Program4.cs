@@ -12,10 +12,11 @@ namespace Ex01_04
 
         public static void Main(String[] args)
         {
-            getuserInput();
+            getUserInput();
+            Console.WriteLine(IsPalindrome(m_UserInput, 0, m_UserInput.Length - 1));
 
         }
-        private static void getuserInput()
+        private static void getUserInput()
         {
             Console.WriteLine("Please insert an input of 10 characters:");
             m_UserInput = Console.ReadLine();
@@ -62,5 +63,32 @@ namespace Ex01_04
 
             return true;
         }
+
+        private static bool IsPalindrome(string i_input, int i_StartOfInput, int i_EndOfInput)
+        {
+            // Base case
+            if (i_StartOfInput >= i_EndOfInput)
+            {
+                return true;
+            }
+
+            if (i_input[i_StartOfInput] == i_input[i_EndOfInput])
+            {
+                return IsPalindrome(i_input, i_StartOfInput + 1, i_EndOfInput - 1);
+            }
+
+            return false;
+        }
+
+        private static bool IsDivisableByFour(int i_Num)
+        {
+            if (i_Num % 4 == 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }
