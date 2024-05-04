@@ -13,8 +13,14 @@ namespace Ex01_04
         public static void Main(String[] args)
         {
             getUserInput();
-            bool isPalindrome = IsPalindrome(m_UserInput, 0, m_UserInput.Length - 1);
+            CheckIfPalindrome();
+            CheckIfDivisibleByFour();
+            CountLowerCaseCharacters();
+        }
 
+        private static void CheckIfPalindrome()
+        {
+            bool isPalindrome = IsPalindrome(m_UserInput, 0, m_UserInput.Length - 1);
             if (isPalindrome)
             {
                 Console.WriteLine($"{m_UserInput} is a Palindrome.");
@@ -23,25 +29,31 @@ namespace Ex01_04
             {
                 Console.WriteLine($"{m_UserInput} is NOT a Palindrome.");
             }
+        }
 
+        private static void CheckIfDivisibleByFour()
+        {
             if (IsAlldigits(m_UserInput))
             {
                 bool isDivisableByFour = IsDivisableByFour(long.Parse(m_UserInput));
                 if (isDivisableByFour)
                 {
-                    Console.WriteLine($"{m_UserInput} is devisable by 4.");
+                    Console.WriteLine($"{m_UserInput} is divisable by 4.");
                 }
             }
-            else 
+            else
             {
-                Console.WriteLine($"{m_UserInput} is Not devisable by 4.");
+                Console.WriteLine($"{m_UserInput} is NOT divisable by 4.");
             }
+        }
 
+        private static void CountLowerCaseCharacters()
+        {
             if (IsAllLetters(m_UserInput))
             {
                 int lowerCaseCount = CountLowerCaseCharacters(m_UserInput);
                 Console.WriteLine($"{m_UserInput} has {lowerCaseCount} lowercase characters.");
-            } 
+            }
             else
             {
                 Console.WriteLine($"{m_UserInput} is not an English string.");
