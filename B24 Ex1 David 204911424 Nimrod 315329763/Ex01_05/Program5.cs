@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Ex01_04;
@@ -16,6 +17,9 @@ namespace Ex01_05
             getUserInput();
             setLeastSignificantDigit(m_UserInput);
             countAllDigitsSmallerFromLSD();
+            countAllDigitsDivisableByThree();
+            printMaxDigit();
+            printAvgDigit();
         }
 
         private static void getUserInput() 
@@ -41,7 +45,7 @@ namespace Ex01_05
             m_LeastSignificantDigit = int.Parse(i_Number[i_Number.Length - 1].ToString());
         }
 
-        private static int countAllDigitsSmallerFromLSD()
+        private static void countAllDigitsSmallerFromLSD()
         {
             int count = 0;
 
@@ -53,7 +57,48 @@ namespace Ex01_05
                 }
             }
             Console.WriteLine(count);
-            return count;   
+        }
+
+        private static void countAllDigitsDivisableByThree() 
+        {
+            int count = 0;
+
+            foreach (char digit in m_UserInput)
+            {
+                if (int.Parse(digit.ToString()) % 3 == 0)
+                {
+                    count++;
+                }
+            }
+            Console.WriteLine(count);
+        }
+
+        private static void printMaxDigit()
+        {
+            int maxDigit = 0;
+
+            foreach (char digit in m_UserInput)
+            {
+                maxDigit = Math.Max(maxDigit, int.Parse(digit.ToString()));
+            }
+
+            Console.WriteLine(maxDigit);
+        }
+
+        private static void printAvgDigit() 
+        {
+            
+            float sumAllDigits = 0;
+            float avgAllDigits = 0;
+            
+
+            foreach (char digit in m_UserInput)
+            {
+                sumAllDigits += int.Parse(digit.ToString());
+            }
+
+            avgAllDigits = sumAllDigits / m_UserInput.Length; 
+            Console.WriteLine(avgAllDigits);
         }
     }
 }

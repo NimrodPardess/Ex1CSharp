@@ -99,7 +99,7 @@ namespace Ex01_04
         {
             foreach (char digit in i_input) 
             {
-                if (!Char.IsDigit(digit))
+                if (!char.IsDigit(digit))
                 {
                     return false;
                 }
