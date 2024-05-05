@@ -7,7 +7,7 @@ using Ex01_04;
 
 namespace Ex01_05
 {
-    internal class Program5
+    public class Program5
     {
         protected static string m_UserInput;
         protected static int m_LeastSignificantDigit;
@@ -16,7 +16,6 @@ namespace Ex01_05
             getUserInput();
             setLeastSignificantDigit(m_UserInput);
             countAllDigitsSmallerFromLSD();
-
         }
 
         private static void getUserInput() 
@@ -39,7 +38,7 @@ namespace Ex01_05
 
         private static void setLeastSignificantDigit(string i_Number)
         {
-            m_LeastSignificantDigit = int.Parse(i_Number[-1].ToString());
+            m_LeastSignificantDigit = int.Parse(i_Number[i_Number.Length - 1].ToString());
         }
 
         private static int countAllDigitsSmallerFromLSD()

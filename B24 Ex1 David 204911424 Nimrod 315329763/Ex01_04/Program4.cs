@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex01_04
 {
-    internal class Program4
+    public class Program4
     {
         protected static string m_UserInput;
 
@@ -95,7 +95,7 @@ namespace Ex01_04
             return true;    
         }
 
-        private static bool IsAlldigits(string i_input)
+        public static bool IsAlldigits(string i_input)
         {
             foreach (char digit in i_input) 
             {
