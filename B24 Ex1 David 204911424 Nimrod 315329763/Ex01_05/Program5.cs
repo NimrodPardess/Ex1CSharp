@@ -12,14 +12,18 @@ namespace Ex01_05
     {
         protected static string m_UserInput;
         protected static int m_LeastSignificantDigit;
+        protected static int m_AllDigitsSmallerFromLSD;
+        protected static int m_AllDigitsDivisableByThree;
+        protected static int m_MaxDigit;
+        protected static float m_AvgDigit;
         public static void Main(string[] args)
         {
             getUserInput();
-            setLeastSignificantDigit(m_UserInput);
-            countAllDigitsSmallerFromLSD();
-            countAllDigitsDivisableByThree();
-            printMaxDigit();
-            printAvgDigit();
+            m_LeastSignificantDigit = getLeastSignificantDigit(m_UserInput);
+            m_AllDigitsSmallerFromLSD = countAllDigitsSmallerFromLSD();
+            m_AllDigitsDivisableByThree = countAllDigitsDivisableByThree();
+            m_MaxDigit = getMaxDigit();
+            m_AvgDigit = getAvgDigit();
         }
 
         private static void getUserInput() 
@@ -40,12 +44,12 @@ namespace Ex01_05
             return validLength && Ex01_04.Program4.IsAlldigits(i_Input);
         }
 
-        private static void setLeastSignificantDigit(string i_Number)
+        private static int getLeastSignificantDigit(string i_Number)
         {
-            m_LeastSignificantDigit = int.Parse(i_Number[i_Number.Length - 1].ToString());
+            return int.Parse(i_Number[i_Number.Length - 1].ToString());
         }
 
-        private static void countAllDigitsSmallerFromLSD()
+        private static int countAllDigitsSmallerFromLSD()
         {
             int count = 0;
 
@@ -56,10 +60,10 @@ namespace Ex01_05
                     count++;
                 }
             }
-            Console.WriteLine(count);
+           return count;
         }
 
-        private static void countAllDigitsDivisableByThree() 
+        private static int countAllDigitsDivisableByThree() 
         {
             int count = 0;
 
@@ -70,10 +74,10 @@ namespace Ex01_05
                     count++;
                 }
             }
-            Console.WriteLine(count);
+            return count;
         }
 
-        private static void printMaxDigit()
+        private static int getMaxDigit()
         {
             int maxDigit = 0;
 
@@ -82,14 +86,13 @@ namespace Ex01_05
                 maxDigit = Math.Max(maxDigit, int.Parse(digit.ToString()));
             }
 
-            Console.WriteLine(maxDigit);
+            return maxDigit;
         }
 
-        private static void printAvgDigit() 
+        private static float getAvgDigit() 
         {
-            
+            float avgAllDigits;
             float sumAllDigits = 0;
-            float avgAllDigits = 0;
             
 
             foreach (char digit in m_UserInput)
@@ -98,7 +101,12 @@ namespace Ex01_05
             }
 
             avgAllDigits = sumAllDigits / m_UserInput.Length; 
-            Console.WriteLine(avgAllDigits);
+            return avgAllDigits;
+        }
+
+        private static void printResults()
+        {
+            string results;
         }
     }
 }
