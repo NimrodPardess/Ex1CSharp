@@ -13,7 +13,7 @@ namespace Ex01_05
         protected static string m_UserInput;
         protected static int m_LeastSignificantDigit;
         protected static int m_AllDigitsSmallerFromLSD;
-        protected static int m_AllDigitsDivisableByThree;
+        protected static int m_AllDigitsDivisibleByThree;
         protected static int m_MaxDigit;
         protected static float m_AvgDigit;
         public static void Main(string[] args)
@@ -21,9 +21,10 @@ namespace Ex01_05
             getUserInput();
             m_LeastSignificantDigit = getLeastSignificantDigit(m_UserInput);
             m_AllDigitsSmallerFromLSD = countAllDigitsSmallerFromLSD();
-            m_AllDigitsDivisableByThree = countAllDigitsDivisableByThree();
+            m_AllDigitsDivisibleByThree = countAllDigitsDivisibleByThree();
             m_MaxDigit = getMaxDigit();
             m_AvgDigit = getAvgDigit();
+            printResults();
         }
 
         private static void getUserInput() 
@@ -63,7 +64,7 @@ namespace Ex01_05
            return count;
         }
 
-        private static int countAllDigitsDivisableByThree() 
+        private static int countAllDigitsDivisibleByThree() 
         {
             int count = 0;
 
@@ -106,7 +107,15 @@ namespace Ex01_05
 
         private static void printResults()
         {
-            string results;
+            string results = String.Format("The input {0} is valid.\n" +
+                                           "The right most digit is {1}.\n" +
+                                           "The maximum digit is {2}.\n" +
+                                           "There are {3} digits that are divisible by 3\n" +
+                                           "There are {4} digits that are smaller than {1}.\n" +
+                                           "The average of all the digits is {5}.", 
+                                           m_UserInput, m_LeastSignificantDigit, m_MaxDigit,m_AllDigitsDivisibleByThree, m_AllDigitsSmallerFromLSD, m_AvgDigit);
+
+            Console.WriteLine(results);
         }
     }
 }
