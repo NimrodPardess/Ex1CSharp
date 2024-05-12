@@ -5,19 +5,28 @@ using System.Text;
 
 namespace Ex01_01
 {
-    internal class Program
+    public class Program
     {
+        private static StringBuilder m_SortedDecimalNumbers = new StringBuilder();
+        private static double m_AverageNumberOfZeros;
+        private static double m_AverageNumberOfOnes;
+        private static int m_CountPowerOfTwo = 0;
+        private static int m_CountStrictlyIncreasingDecimalInputs = 0;
+        private static int m_SmallestDecimalNumber;
+        private static int m_LargestDecimalNumber;
+
         static void Main()
         {
-            List<int> decimalNumbers = GetDecimalNumbersFromUser();
-            PrintDecimalNumbers(decimalNumbers);
-            PrintAverageZeroesAndOnes(decimalNumbers);
-            PrintPowerOfTwoCount(decimalNumbers);
-            PrintStrictlyIncreasingCount(decimalNumbers);
-            PrintSmallestAndLargestNumbers(decimalNumbers);
+            List<int> decimalNumbers = getNumbersFromUserSorted();
+            getDecimalNumbers(decimalNumbers);
+            getAverageZeroesAndOnes(decimalNumbers);
+            countPowerOfTwoCount(decimalNumbers);
+            countStrictlyIncreasing(decimalNumbers);
+            getSmallestAndLargestNumbers(decimalNumbers);
+            printResults();
         }
 
-        static List<int> GetDecimalNumbersFromUser()
+        private static List<int> getNumbersFromUserSorted()
         {
             List<int> decimalNumbers = new List<int>();
             int totalNumberOfInputs = 3;
@@ -28,7 +37,7 @@ namespace Ex01_01
                 string binaryNumber = Console.ReadLine();
 
                 // Validate the input
-                while (!IsValidBinary(binaryNumber))
+                while (!isValidBinary(binaryNumber))
                 {
                     Console.WriteLine("Invalid input. Please enter a 9-digit binary number:");
                     binaryNumber = Console.ReadLine();
@@ -37,23 +46,20 @@ namespace Ex01_01
                 // Convert binary to decimal
                 int decimalNumber = Convert.ToInt32(binaryNumber, 2);
                 decimalNumbers.Add(decimalNumber);
+                decimalNumbers.Sort();
             }
 
             return decimalNumbers;
         }
 
-        static void PrintDecimalNumbers(List<int> decimalNumbers)
+        private static void getDecimalNumbers(List<int> i_DecimalNumbers)
         {
-            // Sort and print the decimal numbers
-            decimalNumbers.Sort();
-            Console.WriteLine("The decimal numbers in increasing order: ");
-            foreach (int decimalNumber in decimalNumbers)
-            {
-                Console.WriteLine(decimalNumber);
-            }
+            m_SortedDecimalNumbers.Append(i_DecimalNumbers[0] + ", "
+                                        + i_DecimalNumbers[1] + ", "
+                                        + i_DecimalNumbers[2]);
         }
 
-        static void PrintAverageZeroesAndOnes(List<int> decimalNumbers)
+        private static void getAverageZeroesAndOnes(List<int> decimalNumbers)
         {
             int totalZeroes = 0;
             int totalOnes = 0;
@@ -61,48 +67,38 @@ namespace Ex01_01
             foreach (int decimalNumber in decimalNumbers)
             {
                 string binaryNumber = Convert.ToString(decimalNumber, 2);
-
                 totalZeroes += binaryNumber.Count(digit => digit == '0');
                 totalOnes += binaryNumber.Count(digit => digit == '1');
             }
 
             // Calculate the average number of ones and zeroes
-            double averageZeroes = totalZeroes / (double)decimalNumbers.Count;
-            double averageOnes = totalOnes / (double)decimalNumbers.Count;
-
-            // Print the average number of ones and zeroes
-            Console.WriteLine($"The average number of zeroes is: {averageZeroes}");
-            Console.WriteLine($"The average number of ones is: {averageOnes}");
+            m_AverageNumberOfZeros = totalZeroes / (double)decimalNumbers.Count;
+            m_AverageNumberOfOnes = totalOnes / (double)decimalNumbers.Count;
         }
 
-        static void PrintPowerOfTwoCount(List<int> decimalNumbers)
+        private static void countPowerOfTwoCount(List<int> decimalNumbers)
         {
-            // Print the number of decimal numbers that are a power of 2
-            int powerOfTwoCount = decimalNumbers.Count(IsPowerOfTwo);
-            Console.WriteLine($"{powerOfTwoCount} of the input decimal numbers are a power of 2.");
+           m_CountPowerOfTwo = decimalNumbers.Count(isPowerOfTwo);
         }
 
-        static void PrintStrictlyIncreasingCount(List<int> decimalNumbers)
+        private static void countStrictlyIncreasing(List<int> decimalNumbers)
         {
-            // Prints the number of strictly increasing chars in a decimal number
-            int strictlyIncreasingCount = decimalNumbers.Count(IsStrictlyIncreasing);
-            Console.WriteLine($"{strictlyIncreasingCount} of the input decimal numbers are a strictly increasing number(by it's chars)");
+            m_CountStrictlyIncreasingDecimalInputs = decimalNumbers.Count(isStrictlyIncreasing);
         }
 
-        static void PrintSmallestAndLargestNumbers(List<int> decimalNumbers)
+        private static void getSmallestAndLargestNumbers(List<int> decimalNumbers)
         {
-            // Prints the largest and smallest numbers
-            Console.WriteLine($"The smallest number is {decimalNumbers.Min()}");
-            Console.WriteLine($"The largest number is {decimalNumbers.Max()}");
+            m_SmallestDecimalNumber = decimalNumbers.Min();
+            m_LargestDecimalNumber = decimalNumbers.Max();
         }
 
-        static bool IsPowerOfTwo(int i_number)
+        private static bool isPowerOfTwo(int i_number)
         {
             return (int)(Math.Ceiling((Math.Log(i_number) / Math.Log(2))))
                   == (int)(Math.Floor(((Math.Log(i_number) / Math.Log(2)))));
         }
 
-        static bool IsStrictlyIncreasing(int i_number)
+        private static bool isStrictlyIncreasing(int i_number)
         {
             string checkNumber = i_number.ToString();
             for (int i = 0; i < checkNumber.Length - 1; i++)
@@ -115,18 +111,34 @@ namespace Ex01_01
             return true;
         }
 
-        static bool IsValidBinary(string binaryNumber)
+        private static bool isValidBinary(string i_binaryNumber)
         {
-            if (binaryNumber.Length != 9)
+            if (i_binaryNumber.Length != 9)
                 return false;
 
-            foreach (char digit in binaryNumber)
+            foreach (char digit in i_binaryNumber)
             {
                 if (digit != '0' && digit != '1')
                     return false;
             }
 
             return true;
+        }
+
+        private static void printResults()
+        {
+            string results = String.Format("The numbers are: {0}.\n" +
+                                           "{1} of the numbers are power of 2.\n" +
+                                           "{2} of the numbers are strictly increasing sequence.\n" +
+                                           "The average of zeroes is {3}.\n" +
+                                           "The average of ones is {4}.\n" +
+                                           "The largest number is {5}.\n" +
+                                           "The smallest number is {6}.",
+                                           m_SortedDecimalNumbers, m_CountPowerOfTwo,
+                                           m_CountStrictlyIncreasingDecimalInputs, m_AverageNumberOfZeros,
+                                           m_AverageNumberOfOnes, m_LargestDecimalNumber, m_SmallestDecimalNumber);
+
+            Console.WriteLine(results);
         }
     }
 }
